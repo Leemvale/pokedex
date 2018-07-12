@@ -1,0 +1,25 @@
+.status {
+    border-radius: 10px;
+    display: inline-block;
+    padding: 10px;
+}
+
+.status.caught {
+    background-color: #b4ffd0;
+}
+
+.status.not-caught {
+    background-color: #ffa99d;
+}
+
+.pokemon-profile-img {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .pokemon-profile-name{
+        text-align: center;
+    }
+}

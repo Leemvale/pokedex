@@ -1,0 +1,10 @@
+.caught-btn {
+    display: block;
+    max-width: 100px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.caught-btn[disabled], .caught-btn[disabled]:hover {
+    background-color: #b4ffd0;
+}
