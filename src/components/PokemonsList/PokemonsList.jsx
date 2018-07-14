@@ -8,7 +8,7 @@ export default class PokemonsList extends Component {
         return (
             <Grid>
                 <Row>
-                    {pokemons.map((pokemon) => <PokemonWithCatch key={pokemon.id} pokemon={pokemon} catchPokemon={catchPokemon}/>)}
+                    {pokemons.length ? pokemons.map((pokemon) => <PokemonWithCatch key={pokemon.id} pokemon={pokemon} catchPokemon={catchPokemon}/>) : null}
                 </Row>
             </Grid>
         );

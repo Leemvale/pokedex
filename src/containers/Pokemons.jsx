@@ -1,13 +1,12 @@
-import React, { Component } from "react";
-import PokemonsList from "../components/PokemonsList"
+import React from "react";
+import { connect } from 'react-redux'
+import {fetchPokemons} from "../actions";
+import Items from "./Items.jsx"
 
-export default class Pokemons extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            pokemons: [],
-            page: 1
-        }
+class Pokemons extends Items{
+
+    getUrl() {
+        return `http://localhost:3000/pokemons?_page=${this.props.page}&_limit=20?`;
     }
 
     catchPokemon = (pokemon) => {
@@ -32,42 +31,34 @@ export default class Pokemons extends Component {
             }
         });
     }
+}
 
-    loadPokemons = () => {
-        let {pokemons, page} = this.state;
-        let url = `http://localhost:3000/pokemons?_page=${page}&_limit=20?`;
-        fetch(url)
-            .then((response) => response.json())
-            .then((newPokemons) => {
-                this.setState({
-                    pokemons:pokemons.concat(newPokemons),
-                    page: page + 1
-                })
-            });
+const mapStateToProps = (state) => {
+    const { pokemons } = state;
+    const {
+        isFetching,
+        items,
+        page
+    } = pokemons || {
+        isFetching: true,
+        items: [],
+        page: 1
     }
-
-    handleScroll = () => {
-        let scrollY = window.scrollY;
-        let allScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        if(scrollY === allScroll) {
-            this.loadPokemons();
-        }
-    }
-
-    componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll);
-        this.loadPokemons();
-    }
-
-    render() {
-        let {pokemons} = this.state;
-        return (
-            <div>
-                <PokemonsList pokemons={pokemons} catchPokemon={this.catchPokemon}/>
-            </div>
-        );
-    }
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
+    return {
+        pokemons: items,
+        page,
     }
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loadPokemons: (page, url) => {
+            dispatch(fetchPokemons(page, url))
+        }
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Pokemons)

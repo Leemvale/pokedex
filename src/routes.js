@@ -9,12 +9,12 @@ const routes = [
         exact: true
     },
     {
-        path:"/main",
+        path:"/pokemons",
         component: Pokemons,
         exact: true
     },
     {
-        path:"/caught-pokemons",
+        path:"/caughtPokemons",
         component: CaughtPokemons,
         exact: true
     },

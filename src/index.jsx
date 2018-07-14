@@ -1,8 +1,26 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Menu from "./components/Menu";
-import {BrowserRouter, Switch, Route} from "react-router-dom";
+import {BrowserRouter, Switch, Route, browserHistory } from "react-router-dom";
+import { Provider } from 'react-redux'
+import thunkMiddleware from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore, applyMiddleware } from 'redux'
+import createHistory from "history/createBrowserHistory";
+import {
+    ConnectedRouter,
+    routerMiddleware,
+} from "react-router-redux";
+
+import mainReducer from './reducers'
 import routes from"./routes";
+import Menu from "./components/Menu";
+
+const history = createHistory();
+
+const store = createStore(
+    mainReducer,
+    composeWithDevTools(applyMiddleware(thunkMiddleware, routerMiddleware(history)))
+);
 
 class App extends Component {
     render() {
@@ -17,4 +35,15 @@ class App extends Component {
     }
 }
 
-ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById('root'));
+ReactDOM.render(
+    <Provider store = {store}>
+        <ConnectedRouter history={history}>
+            <App />
+        </ConnectedRouter>
+     </Provider>,
+    document.getElementById('root'));
+
+
+
+
+

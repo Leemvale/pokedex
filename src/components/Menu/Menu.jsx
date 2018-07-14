@@ -12,11 +12,15 @@ export default class Menu extends Component {
                </Navbar.Header>
                <Navbar.Collapse>
                    <Nav>
-                       <LinkContainer to="/main">
-                           <NavItem className={"menu-item"}>Pokemons</NavItem>
+                       <LinkContainer to="/pokemons">
+                           <NavItem className={"menu-item"}>
+                               Pokemons
+                           </NavItem>
                        </LinkContainer>
-                       <LinkContainer to ="/caught-pokemons">
-                           <NavItem className={"menu-item"}>Caught</NavItem>
+                       <LinkContainer to ="/caughtPokemons">
+                           <NavItem className={"menu-item"}>
+                               Caught
+                           </NavItem>
                        </LinkContainer>
                    </Nav>
                </Navbar.Collapse>

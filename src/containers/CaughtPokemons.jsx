@@ -1,18 +1,40 @@
 import React from "react";
-import Pokemons from "./Pokemons.jsx"
+import Items from "./Items.jsx"
+import {fetchPokemons} from "../actions";
+import {connect} from "react-redux";
 
-export default class CaughtPokemons extends Pokemons {
-    loadPokemons = () => {
-        let {pokemons, page} = this.state;
-        let url = `http://localhost:3000/caughtPokemons?_expand=pokemon&_page=${page}&_limit=20`;
-        fetch(url)
-            .then((response) => response.json())
-            .then((caughtPokemons) => {
-                this.setState({
-                    pokemons: pokemons.concat(caughtPokemons.map((caughtPokemon)=> caughtPokemon.pokemon)),
-                    page: page + 1
-                })
-            });
+class CaughtPokemons extends Items {
+    getUrl() {
+        return `http://localhost:3000/caughtPokemons?_expand=pokemon&_page=${this.props.page}&_limit=20`
     }
-
 }
+
+const mapStateToProps = (state) => {
+    const { pokemons } = state;
+    const {
+        isFetching,
+        items,
+        page
+    } = pokemons || {
+        isFetching: true,
+        items: [],
+        page: 1
+    }
+    return {
+        pokemons: items.map((caugthPokemon) => caugthPokemon.pokemon),
+        page,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loadPokemons: (page, url) => {
+            dispatch(fetchPokemons(page, url))
+        }
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CaughtPokemons)
