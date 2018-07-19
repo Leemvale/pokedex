@@ -1,23 +1,51 @@
+import {
+    REQUEST_POKEMONS, RECEIVE_POKEMONS, CATCH_POKEMON, POKEMON_TO_CAUGHT,
+    REQUEST_CAUGHT_POKEMONS, RECEIVE_CAUGHT_POKEMONS
+} from "./constants"
 
-export const REQUEST_POKEMONS = 'REQUEST_POKEMONS';
 export function requestPokemons() {
     return {
         type: REQUEST_POKEMONS,
     }
 }
 
-export const RECEIVE_POKEMONS = 'RECEIVE_POKEMONS';
 export function receivePokemons(json) {
-    console.log(json)
     return {
         type: RECEIVE_POKEMONS,
         pokemons: json,
     }
 }
 
+
+export function requestCaughtPokemons() {
+    return {
+        type: REQUEST_CAUGHT_POKEMONS,
+    }
+}
+
+export function receiveCaughtPokemons(json) {
+    return {
+        type: RECEIVE_CAUGHT_POKEMONS,
+        pokemons: json,
+    }
+}
+
+export function catchPokemon() {
+    return {
+        type: CATCH_POKEMON,
+    }
+}
+
+export function pokemonToCaught(pokemon) {
+    return {
+        type: POKEMON_TO_CAUGHT,
+        pokemon
+    }
+}
+
 export function fetchPokemons(page, url) {
     return function (dispatch) {
-        dispatch(requestPokemons())
+        dispatch(requestPokemons());
         return fetch(url)
             .then((response) => response.json())
             .then(json =>
@@ -26,3 +54,30 @@ export function fetchPokemons(page, url) {
     }
 }
 
+export function fetchCaughtPokemons(page, url) {
+    return function (dispatch) {
+        dispatch(requestCaughtPokemons());
+        return fetch(url)
+            .then((response) => response.json())
+            .then(json =>
+                dispatch(receiveCaughtPokemons(json))
+            )
+    }
+}
+
+export function addPokemonToCaught(pokemon) {
+    return function (dispatch) {
+        dispatch(catchPokemon());
+        return fetch(`http://localhost:3000/caughtPokemons`, {
+            method: "post",
+            body: JSON.stringify({
+                pokemonId: pokemon.id,
+                time: new Date()
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(dispatch(pokemonToCaught(pokemon)));
+    }
+}

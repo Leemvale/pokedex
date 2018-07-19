@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import "./Pokemon.css";
-import { Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 
 export default class Pokemon extends Component {
     render() {
-        let {pokemon} = this.props;
-        let {name, id} = pokemon;
+        let { pokemon } = this.props;
+        let { name, id } = pokemon;
         return (
             <Link to={`/pokemons/${id}`}>
                 <figure>

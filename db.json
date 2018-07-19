@@ -2,12 +2,10 @@
   "pokemons": [
     {
       "name": "bulbasaur",
-      "caught": true,
       "id": 1
     },
     {
       "name": "ivysaur",
-      "caught": true,
       "id": 2
     },
     {
@@ -20,22 +18,18 @@
     },
     {
       "name": "charmeleon",
-      "caught": true,
       "id": 5
     },
     {
       "name": "charizard",
-      "caught": true,
       "id": 6
     },
     {
       "name": "squirtle",
-      "caught": true,
       "id": 7
     },
     {
       "name": "wartortle",
-      "caught": true,
       "id": 8
     },
     {
@@ -44,7 +38,6 @@
     },
     {
       "name": "caterpie",
-      "caught": true,
       "id": 10
     },
     {
@@ -65,7 +58,6 @@
     },
     {
       "name": "beedrill",
-      "caught": true,
       "id": 15
     },
     {
@@ -78,7 +70,6 @@
     },
     {
       "name": "pidgeot",
-      "caught": true,
       "id": 18
     },
     {
@@ -91,12 +82,10 @@
     },
     {
       "name": "spearow",
-      "caught": true,
       "id": 21
     },
     {
       "name": "fearow",
-      "caught": true,
       "id": 22
     },
     {
@@ -117,17 +106,14 @@
     },
     {
       "name": "sandshrew",
-      "caught": true,
       "id": 27
     },
     {
       "name": "sandslash",
-      "caught": true,
       "id": 28
     },
     {
       "name": "nidoran-f",
-      "caught": true,
       "id": 29
     },
     {
@@ -152,12 +138,10 @@
     },
     {
       "name": "clefairy",
-      "caught": true,
       "id": 35
     },
     {
       "name": "clefable",
-      "caught": true,
       "id": 36
     },
     {
@@ -166,7 +150,6 @@
     },
     {
       "name": "ninetales",
-      "caught": true,
       "id": 38
     },
     {
@@ -183,12 +166,10 @@
     },
     {
       "name": "golbat",
-      "caught": true,
       "id": 42
     },
     {
       "name": "oddish",
-      "caught": true,
       "id": 43
     },
     {
@@ -221,7 +202,6 @@
     },
     {
       "name": "dugtrio",
-      "caught": true,
       "id": 51
     },
     {
@@ -234,7 +214,6 @@
     },
     {
       "name": "psyduck",
-      "caught": true,
       "id": 54
     },
     {
@@ -247,12 +226,10 @@
     },
     {
       "name": "primeape",
-      "caught": true,
       "id": 57
     },
     {
       "name": "growlithe",
-      "caught": true,
       "id": 58
     },
     {
@@ -269,7 +246,6 @@
     },
     {
       "name": "poliwrath",
-      "caught": true,
       "id": 62
     },
     {
@@ -372,12 +348,10 @@
     },
     {
       "name": "dewgong",
-      "caught": true,
       "id": 87
     },
     {
       "name": "grimer",
-      "caught": true,
       "id": 88
     },
     {
@@ -410,7 +384,6 @@
     },
     {
       "name": "drowzee",
-      "caught": true,
       "id": 96
     },
     {
@@ -431,7 +404,6 @@
     },
     {
       "name": "electrode",
-      "caught": true,
       "id": 101
     },
     {
@@ -2914,143 +2886,13 @@
   "caughtPokemons": [
     {
       "pokemonId": 2,
-      "time": "2018-07-09T13:51:40.368Z",
+      "time": "2018-07-19T14:16:11.532Z",
       "id": 1
     },
     {
       "pokemonId": 7,
-      "time": "2018-07-09T14:03:52.261Z",
+      "time": "2018-07-19T14:23:25.273Z",
       "id": 2
-    },
-    {
-      "pokemonId": 8,
-      "time": "2018-07-09T14:03:54.504Z",
-      "id": 3
-    },
-    {
-      "pokemonId": 10,
-      "time": "2018-07-09T14:03:56.272Z",
-      "id": 4
-    },
-    {
-      "pokemonId": 38,
-      "time": "2018-07-09T14:34:40.440Z",
-      "id": 5
-    },
-    {
-      "pokemonId": 5,
-      "time": "2018-07-09T22:58:44.793Z",
-      "id": 6
-    },
-    {
-      "pokemonId": 15,
-      "time": "2018-07-09T22:58:52.198Z",
-      "id": 7
-    },
-    {
-      "pokemonId": 18,
-      "time": "2018-07-09T22:59:03.351Z",
-      "id": 8
-    },
-    {
-      "pokemonId": 29,
-      "time": "2018-07-09T22:59:19.271Z",
-      "id": 9
-    },
-    {
-      "pokemonId": 54,
-      "time": "2018-07-09T22:59:23.953Z",
-      "id": 10
-    },
-    {
-      "pokemonId": 27,
-      "time": "2018-07-09T22:59:40.491Z",
-      "id": 11
-    },
-    {
-      "pokemonId": 28,
-      "time": "2018-07-09T22:59:41.797Z",
-      "id": 12
-    },
-    {
-      "pokemonId": 84,
-      "time": "2018-07-09T22:59:50.289Z",
-      "id": 13
-    },
-    {
-      "pokemonId": 57,
-      "time": "2018-07-09T23:00:23.988Z",
-      "id": 14
-    },
-    {
-      "pokemonId": 58,
-      "time": "2018-07-09T23:00:24.984Z",
-      "id": 15
-    },
-    {
-      "pokemonId": 35,
-      "time": "2018-07-09T23:00:34.331Z",
-      "id": 16
-    },
-    {
-      "pokemonId": 36,
-      "time": "2018-07-09T23:00:35.344Z",
-      "id": 17
-    },
-    {
-      "pokemonId": 43,
-      "time": "2018-07-09T23:00:38.769Z",
-      "id": 18
-    },
-    {
-      "pokemonId": 42,
-      "time": "2018-07-09T23:00:39.819Z",
-      "id": 19
-    },
-    {
-      "pokemonId": 87,
-      "time": "2018-07-09T23:00:55.752Z",
-      "id": 20
-    },
-    {
-      "pokemonId": 88,
-      "time": "2018-07-09T23:00:56.744Z",
-      "id": 21
-    },
-    {
-      "pokemonId": 96,
-      "time": "2018-07-09T23:00:59.745Z",
-      "id": 22
-    },
-    {
-      "pokemonId": 1,
-      "time": "2018-07-09T23:49:44.929Z",
-      "id": 23
-    },
-    {
-      "pokemonId": 22,
-      "time": "2018-07-09T23:51:17.868Z",
-      "id": 24
-    },
-    {
-      "pokemonId": 51,
-      "time": "2018-07-09T23:51:37.709Z",
-      "id": 25
-    },
-    {
-      "pokemonId": 6,
-      "time": "2018-07-10T00:50:29.656Z",
-      "id": 26
-    },
-    {
-      "pokemonId": 101,
-      "time": "2018-07-10T00:54:37.425Z",
-      "id": 27
-    },
-    {
-      "pokemonId": 21,
-      "time": "2018-07-10T08:48:12.251Z",
-      "id": 28
     }
   ]
 }

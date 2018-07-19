@@ -1,16 +1,16 @@
-import Pokemons from "./containers/Pokemons.jsx";
+import AllPokemons from "./containers/AllPokemons.jsx";
 import CaughtPokemons from "./containers/CaughtPokemons.jsx";
 import PokemonDetail from "./containers/PokemonDetail.jsx";
 
 const routes = [
     {
         path:"/",
-        component: Pokemons,
+        component: AllPokemons,
         exact: true
     },
     {
         path:"/pokemons",
-        component: Pokemons,
+        component: AllPokemons,
         exact: true
     },
     {
