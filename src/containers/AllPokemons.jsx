@@ -9,28 +9,28 @@ class Pokemons extends Items{
         return `http://localhost:3000/pokemons?_page=${this.props.page}&_limit=20?`;
     }
 
-    catchPokemon = (pokemon) => {
-        fetch(`http://localhost:3000/caughtPokemons`, {
-            method: "post",
-            body: JSON.stringify({
-                pokemonId: pokemon.id,
-                time: new Date()
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        fetch(`http://localhost:3000/pokemons/${pokemon.id}`, {
-            method: "put",
-            body: JSON.stringify({
-                name: pokemon.name,
-                caught: true
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-    }
+    // catchPokemon = (pokemon) => {
+    //     fetch(`http://localhost:3000/caughtPokemons`, {
+    //         method: "post",
+    //         body: JSON.stringify({
+    //             pokemonId: pokemon.id,
+    //             time: new Date()
+    //         }),
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     });
+    //     fetch(`http://localhost:3000/pokemons/${pokemon.id}`, {
+    //         method: "put",
+    //         body: JSON.stringify({
+    //             name: pokemon.name,
+    //             caught: true
+    //         }),
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     });
+    // }
 }
 
 const mapStateToProps = (state) => {
