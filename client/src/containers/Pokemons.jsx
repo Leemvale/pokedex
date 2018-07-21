@@ -6,13 +6,13 @@ export default class Pokemons extends Component {
         let scrollY = window.scrollY;
         let allScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         if (scrollY === allScroll) {
-            this.props.loadPokemons(this.props.page, this.getUrl());
+            this.props.loadPokemons(this.props.page);
         }
-    }
+    };
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
-        this.props.loadPokemons(this.props.page, this.getUrl());
+        this.props.loadPokemons(this.props.page);
     }
 
     componentWillUnmount() {

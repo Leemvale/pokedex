@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 class CatchButton extends Component {
     isDisabled() {
         const { pokemon } = this.props;
-        return !!pokemon.caughtPokemons.length;
+        return !!pokemon.length;
     }
 
     render() {

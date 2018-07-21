@@ -43,22 +43,22 @@ export function pokemonToCaught(pokemon) {
     }
 }
 
-export function fetchPokemons(page, url) {
+export function fetchPokemons(page) {
     return function (dispatch) {
         dispatch(requestPokemons());
-        return fetch(url)
-            .then((response) => response.json())
+        return fetch(`http://localhost:5000/api/pokemons`)
+            .then(response => response.json())
             .then(json =>
                 dispatch(receivePokemons(json))
             )
     }
 }
 
-export function fetchCaughtPokemons(page, url) {
+export function fetchCaughtPokemons(page) {
     return function (dispatch) {
         dispatch(requestCaughtPokemons());
-        return fetch(url)
-            .then((response) => response.json())
+        return fetch(`http://localhost:3000/caughtPokemons?_expand=pokemon&_page=${page}&_limit=20`)
+            .then(response => response.json())
             .then(json =>
                 dispatch(receiveCaughtPokemons(json))
             )

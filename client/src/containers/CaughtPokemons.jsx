@@ -1,13 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import Pokemons from "./Pokemons.jsx"
-import { fetchCaughtPokemons } from "../actions";
-import PokemonsList from "../components/PokemonsList"
+import { fetchCaughtPokemons } from "../actions/index";
+import PokemonsList from "../components/PokemonsList/index"
 
 class CaughtPokemons extends Pokemons {
-    getUrl() {
-        return `http://localhost:3000/caughtPokemons?_expand=pokemon&_page=${this.props.page}&_limit=20`
-    }
     render() {
         const { pokemons } = this.props;
         return (
@@ -26,20 +23,20 @@ const mapStateToProps = (state) => {
     } = caughtPokemons || {
         items: [],
         page: 1
-    }
+    };
     return {
         pokemons: items.map((caugthPokemon) => caugthPokemon.pokemon),
         page,
     }
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loadPokemons: (page, url) => {
-            dispatch(fetchCaughtPokemons(page, url))
+        loadPokemons: (page) => {
+            dispatch(fetchCaughtPokemons(page))
         }
     }
-}
+};
 
 export default connect(
     mapStateToProps,

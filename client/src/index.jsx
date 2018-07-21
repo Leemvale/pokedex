@@ -11,9 +11,9 @@ import {
     routerMiddleware,
 } from "react-router-redux";
 
-import mainReducer from './reducers'
-import routes from"./routes";
-import Menu from "./components/Menu";
+import mainReducer from './reducers/index'
+import routes from "./routes";
+import Menu from "./components/Menu/index";
 
 const history = createHistory();
 

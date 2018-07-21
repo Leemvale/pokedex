@@ -4,11 +4,11 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     entry:{
-        main: path.resolve(__dirname, "src/index.jsx")
+        main: path.resolve(__dirname, "./client/src/index.jsx")
     },
     output: {
-        path: path.resolve(__dirname, "dist"),
-        filename: "bundle.js"
+        path: path.resolve(__dirname, "./client/dist"),
+        filename: "[name]-bundle.js"
     },
     module: {
         rules: [
@@ -31,7 +31,7 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin({filename: "style.css"}),
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, "src", "index.html"),
+            template: path.resolve(__dirname,"client", "src", "index.html"),
             filename: "index.html"
         })
     ],

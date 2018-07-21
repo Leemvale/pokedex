@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PokemonPage from "../components/PokemonPage"
+import PokemonPage from "../components/PokemonPage/index"
 
 export default class PokemonDetail extends Component {
     constructor(props) {

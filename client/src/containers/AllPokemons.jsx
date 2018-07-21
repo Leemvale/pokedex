@@ -1,14 +1,10 @@
 import React from "react";
 import { connect } from 'react-redux'
-import {fetchPokemons} from "../actions";
+import {fetchPokemons} from "../actions/index";
 import Pokemons from "./Pokemons.jsx"
-import PokemonsList from "../components/PokemonsList"
+import PokemonsList from "../components/PokemonsList/index"
 
 class AllPokemons extends Pokemons{
-
-    getUrl() {
-        return `http://localhost:3000/pokemons?_embed=caughtPokemons&_page=${this.props.page}&_limit=20?`;
-    }
     render() {
         const { pokemons } = this.props;
         return (
@@ -22,11 +18,9 @@ class AllPokemons extends Pokemons{
 const mapStateToProps = (state) => {
     const { pokemons } = state;
     const {
-        isFetching,
         items,
         page
     } = pokemons || {
-        isFetching: true,
         items: [],
         page: 1
     };
@@ -38,8 +32,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loadPokemons: (page, url) => {
-            dispatch(fetchPokemons(page, url))
+        loadPokemons: (page) => {
+            dispatch(fetchPokemons(page))
         }
     }
 };
