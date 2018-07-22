@@ -6,7 +6,11 @@ const CaughtPokemonSchema = new Schema({
     time: {
         type: String,
         require: true
+    },
+    pokemonId: {
+        type: Object,
+        require: true
     }
 });
 
-module.exports = Pokemon = mongoose.model('caughtPokemons', CaughtPokemonSchema);
+module.exports = CaughtPokemon = mongoose.model('caughtPokemons', CaughtPokemonSchema);
