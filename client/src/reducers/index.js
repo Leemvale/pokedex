@@ -18,7 +18,7 @@ function pokemons(state = {
         case RECEIVE_POKEMONS:
             return Object.assign({}, state, {
                 isFetching: false,
-                items: state.items.concat(action.pokemons),
+                items: action.pokemons,
                 page: state.page + 1
             });
         default:
@@ -39,7 +39,7 @@ function caughtPokemons(state = {
         case RECEIVE_CAUGHT_POKEMONS:
             return Object.assign({}, state, {
                 isFetching: false,
-                items: state.items.concat(action.pokemons),
+                items: action.pokemons,
                 page: state.page + 1
             });
         default:

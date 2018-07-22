@@ -57,7 +57,7 @@ export function fetchPokemons(page) {
 export function fetchCaughtPokemons(page) {
     return function (dispatch) {
         dispatch(requestCaughtPokemons());
-        return fetch(`http://localhost:3000/caughtPokemons?_expand=pokemon&_page=${page}&_limit=20`)
+        return fetch(`http://localhost:5000/api/caughtPokemons`)
             .then(response => response.json())
             .then(json =>
                 dispatch(receiveCaughtPokemons(json))
@@ -68,7 +68,7 @@ export function fetchCaughtPokemons(page) {
 export function addPokemonToCaught(pokemon) {
     return function (dispatch) {
         dispatch(catchPokemon());
-        return fetch(`http://localhost:3000/caughtPokemons`, {
+        return fetch(`http://localhost:5000/api/caughtPokemons`, {
             method: "post",
             body: JSON.stringify({
                 pokemonId: pokemon.id,
