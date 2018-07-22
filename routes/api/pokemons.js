@@ -7,13 +7,12 @@ const Pokemon = require('../../models/Pokemon');
 // @desc   Get All Pokemons
 // @access Public
 router.get('/', (req, res) => {
-    res.header('Access-Control-Allow-Origin', '*');
     Pokemon.find()
         .then(pokemons =>  res.json(pokemons))
 });
 
-// @route  POSTapi/pokemons
-// @desc   Create A Post
+// @route  POST api/pokemons
+// @desc   Create A Pokemon
 // @access Public
 router.post('/', (req, res) => {
     const newPokemon = new Pokemon({

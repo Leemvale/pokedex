@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const pokemons = require('./routes/api/pokemons');
+const caughtPokemons = require('./routes/api/caughtPokemons');
 
 const app = express();
 
@@ -20,6 +21,7 @@ mongoose
 
 // Use Routes
 app.use('/api/pokemons', pokemons);
+app.use('/api/caughtPokemons', caughtPokemons);
 
 app.use(function(req, res) {
     res.header("Access-Control-Allow-Origin", "http://localhost:8080/");
