@@ -1,5 +1,5 @@
 import {
-    REQUEST_POKEMONS, RECEIVE_POKEMONS, CATCH_POKEMON, POKEMON_TO_CAUGHT,
+    REQUEST_POKEMONS, RECEIVE_POKEMONS, CATCH_POKEMON_REQUEST, POKEMON_TO_CAUGHT,
     REQUEST_CAUGHT_POKEMONS, RECEIVE_CAUGHT_POKEMONS
 } from "./constants"
 
@@ -30,9 +30,9 @@ export function receiveCaughtPokemons(json) {
     }
 }
 
-export function catchPokemon() {
+export function catchPokemonRrequest() {
     return {
-        type: CATCH_POKEMON,
+        type: CATCH_POKEMON_REQUEST,
     }
 }
 
@@ -57,7 +57,7 @@ export function fetchPokemons(page) {
 export function fetchCaughtPokemons(page) {
     return function (dispatch) {
         dispatch(requestCaughtPokemons());
-        return fetch(`http://localhost:5000/api/caughtPokemons`)
+        return fetch(`http://localhost:5000/api/pokemons/caught-pokemons`)
             .then(response => response.json())
             .then(json =>
                 dispatch(receiveCaughtPokemons(json))
@@ -67,11 +67,12 @@ export function fetchCaughtPokemons(page) {
 
 export function addPokemonToCaught(pokemon) {
     return function (dispatch) {
-        dispatch(catchPokemon());
-        return fetch(`http://localhost:5000/api/caughtPokemons`, {
-            method: "post",
+        dispatch(catchPokemonRrequest());
+        return fetch(`http://localhost:5000/api/pokemons`, {
+            method: "put",
             body: JSON.stringify({
-                pokemonId: pokemon.id,
+                id: pokemon._id,
+                caught: true,
                 time: new Date()
             }),
             headers: {

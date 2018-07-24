@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 export default class Pokemon extends Component {
     render() {
-        let { pokemon } = this.props;
-        let { name, id } = pokemon;
+        const { pokemon } = this.props;
+        const { name, id } = pokemon;
         return (
             <Link to={`/pokemons/${id}`}>
                 <figure>

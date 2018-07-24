@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const pokemons = require('./routes/api/pokemons');
-const caughtPokemons = require('./routes/api/caughtPokemons');
 
 const app = express();
 
@@ -28,7 +27,7 @@ mongoose
 
 // Use Routes
 app.use('/api/pokemons', pokemons);
-app.use('/api/caughtPokemons', caughtPokemons);
+
 
 
 const port = process.env.PORT || 5000;

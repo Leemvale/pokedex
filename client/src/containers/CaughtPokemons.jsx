@@ -25,7 +25,7 @@ const mapStateToProps = (state) => {
         page: 1
     };
     return {
-        pokemons: items.map((caugthPokemon) => caugthPokemon.pokemon),
+        pokemons: items,
         page,
     }
 };
