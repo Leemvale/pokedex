@@ -30,8 +30,8 @@ router.get('/caught-pokemons', (req, res) => {
         .then(pokemons => res.json(pokemons))
 });
 
-// @router PUT api/caughtPokemons
-// @desc   Create A CaughtPokemon
+// @router PUT api/pokemons
+// @desc   Update to CaughtPokemon
 // @access Public
 router.put('/', (req, res) => {
     let {id, caught, time} = req.body;
@@ -39,5 +39,9 @@ router.put('/', (req, res) => {
         .then(pokemons =>  res.json(pokemons))
 });
 
+router.get('/:id', function (req, res) {
+    Pokemon.findOne({number: req.params.id})
+        .then(pokemon => res.json(pokemon))
+});
 
 module.exports = router;

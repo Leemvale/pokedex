@@ -11,7 +11,7 @@ export default class PokemonDetail extends Component {
 
     getPokemon() {
         let {id}= this.props.match.params;
-        fetch(`http://localhost:3000/pokemons/${id}?_embed=caughtPokemons`)
+        fetch(`http://localhost:5000/api/pokemons/${id}`)
             .then((response) => response.json())
             .then((pokemon) => {
                 this.setState({
