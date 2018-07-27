@@ -22,7 +22,7 @@ const mapStateToProps = (state) => {
         page
     } = caughtPokemons || {
         items: [],
-        page: 1
+        page: 0
     };
     return {
         pokemons: items,

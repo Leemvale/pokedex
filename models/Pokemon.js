@@ -14,4 +14,5 @@ const PokemonSchema = new Schema({
     caught: Boolean,
     time: Date
 });
+
 module.exports = Pokemon = mongoose.model('pokemons', PokemonSchema);

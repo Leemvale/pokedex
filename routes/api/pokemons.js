@@ -7,7 +7,11 @@ const Pokemon = require('../../models/Pokemon');
 // @desc   Get All Pokemons
 // @access Public
 router.get('/', (req, res) => {
+    let { offset, limit } = req.query;
     Pokemon.find()
+        .sort('number')
+        .skip(parseInt(offset) * parseInt(limit))
+        .limit(parseInt(limit))
         .then(pokemons =>  res.json(pokemons))
 });
 
@@ -26,7 +30,11 @@ router.post('/', (req, res) => {
 // @desc   Get All Caught Pokemons
 // @access Public
 router.get('/caught-pokemons', (req, res) => {
+    let { offset, limit } = req.query;
     Pokemon.find({caught: true})
+        .sort('time')
+        .skip(parseInt(offset) * parseInt(limit))
+        .limit(parseInt(limit))
         .then(pokemons => res.json(pokemons))
 });
 
@@ -37,6 +45,11 @@ router.put('/', (req, res) => {
     let {id, caught, time} = req.body;
     Pokemon.findByIdAndUpdate(id, {caught, time}, {new: true})
         .then(pokemons =>  res.json(pokemons))
+});
+
+router.get('/:id', function (req, res) {
+    Pokemon.findOne({number: req.params.id})
+        .then(pokemon => res.json(pokemon))
 });
 
 router.get('/:id', function (req, res) {

@@ -8,7 +8,7 @@ import {
 function pokemons(state = {
     isFetching: false,
     items: [],
-    page: 1
+    page: 0
 }, action) {
     switch (action.type) {
         case REQUEST_POKEMONS:
@@ -18,7 +18,7 @@ function pokemons(state = {
         case RECEIVE_POKEMONS:
             return Object.assign({}, state, {
                 isFetching: false,
-                items: action.pokemons,
+                items: state.items.concat(action.pokemons),
                 page: state.page + 1
             });
         default:
@@ -29,7 +29,7 @@ function pokemons(state = {
 function caughtPokemons(state = {
     isFetching: false,
     items: [],
-    page: 1
+    page: 0
 }, action) {
     switch (action.type) {
         case REQUEST_CAUGHT_POKEMONS:
@@ -39,7 +39,7 @@ function caughtPokemons(state = {
         case RECEIVE_CAUGHT_POKEMONS:
             return Object.assign({}, state, {
                 isFetching: false,
-                items: action.pokemons,
+                items: state.items.concat(action.pokemons),
                 page: state.page + 1
             });
         default:
