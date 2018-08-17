@@ -1,11 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
+const checkAuth = require('../../middlewares/auth/checkAuth');
+
 const Pokemon = require('../../models/Pokemon');
 
-// @route  GET api/pokemons
-// @desc   Get All Pokemons
-// @access Public
 router.get('/', (req, res) => {
     let { offset, limit } = req.query;
     Pokemon.find()
@@ -15,44 +14,31 @@ router.get('/', (req, res) => {
         .then(pokemons =>  res.json(pokemons))
 });
 
-// @route  POST api/pokemons
-// @desc   Create A Pokemon
-// @access Public
-router.post('/', (req, res) => {
-    const newPokemon = new Pokemon({
-        name: req.body.name
+router.get('/caught-pokemons', checkAuth, (req, res) => {
+    const { offset, limit } = req.query;
+    User.findById(req.userId, { password: 0 }, function (err, user) {
+        if (err) return res.status(500).send("There was a problem finding the user.");
+        if (!user) return res.status(404).send("No user found.");
+        console.log(user);
+
+        res.status(200).send(user.caughtPokemons);
     });
-
-    newPokemon.save().then(pokemon => res.json(pokemon));
 });
 
-// @route  GET api/pokemons/caught-pokemons
-// @desc   Get All Caught Pokemons
-// @access Public
-router.get('/caught-pokemons', (req, res) => {
-    let { offset, limit } = req.query;
-    Pokemon.find({caught: true})
-        .sort('time')
-        .skip(parseInt(offset) * parseInt(limit))
-        .limit(parseInt(limit))
-        .then(pokemons => res.json(pokemons))
+router.put('/', checkAuth, (req, res) => {
+    const { pokemonId, time } = req.body;
+    console.log(req.body);
+    User.findById(req.userId, { password: 0 }, function (err, user) {
+        if (err) return res.status(500).send("There was a problem finding the user.");
+        if (!user) return res.status(404).send("No user found.");
+    })
+        .then(user => {
+            User.findByIdAndUpdate(req.userId, {caughtPokemons: user.caughtPokemons.concat({pokemonId, time})}, {new: true})
+            .then(user =>  res.json(user.caughtPokemons))
+        })
 });
 
-// @router PUT api/pokemons
-// @desc   Update to CaughtPokemon
-// @access Public
-router.put('/', (req, res) => {
-    let {id, caught, time} = req.body;
-    Pokemon.findByIdAndUpdate(id, {caught, time}, {new: true})
-        .then(pokemons =>  res.json(pokemons))
-});
-
-router.get('/:id', function (req, res) {
-    Pokemon.findOne({number: req.params.id})
-        .then(pokemon => res.json(pokemon))
-});
-
-router.get('/:id', function (req, res) {
+router.get('/:id', (req, res) => {
     Pokemon.findOne({number: req.params.id})
         .then(pokemon => res.json(pokemon))
 });
