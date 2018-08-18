@@ -36,7 +36,7 @@ router.put('/', checkAuth, (req, res) => {
         .then(() => {
             return Pokemon.findOneAndUpdate({ number: pokemonId }, { $push: { users: req.userId } })
         })
-        .then(() => res.status(200))
+        .then(() => res.status(200).send("Updated"))
         .catch(() => res.status(500).send("There was a problem with updating"));
 });
 
