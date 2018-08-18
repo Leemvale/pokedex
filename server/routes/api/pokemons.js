@@ -21,33 +21,23 @@ router.get('/', (req, res) => {
 });
 
 router.get('/caught-pokemons', checkAuth, (req, res) => {
-    const { offset, limit } = req.query;
-    User.findById(req.userId, { password: 0 }, function (err, user) {
-        if (err) return res.status(500).send("There was a problem finding the user.");
-        if (!user) return res.status(404).send("No user found.");
-        res.status(200).json(user.caughtPokemons);
-    });
+    const {offset, limit} = req.query;
+    User.findById(req.userId, {password: 0})
+        .then(user => {
+            if (!user) return res.status(404).send("No user found.");
+            res.status(200).json(user.caughtPokemons);
+        })
+        .catch(() => res.status(500).send("There was a problem finding the user."));
 });
 
 router.put('/', checkAuth, (req, res) => {
     const { pokemonId, time } = req.body;
-    User.findById(req.userId, { password: 0 }, function (err, user) {
-        if (err) return res.status(500).send("There was a problem finding the user.");
-        if (!user) return res.status(404).send("No user found.");
-    })
-        .then((user) => {
-            Pokemon.findOne({ number: pokemonId },{}, function (err, pokemon) {
-                if (err) return res.status(500).send("There was a problem finding the pokemon.");
-                if (!pokemon) return res.status(404).send("No pokemon found.");
-                User.findByIdAndUpdate(req.userId, {caughtPokemons: user.caughtPokemons.concat({pokemonId, time})}, {new: true})
-                    .then(user =>  {
-                        Pokemon.findOneAndUpdate({ number: pokemonId }, {users: pokemon.users.concat(req.userId)})
-                            .then(pokemon =>  res.json({users: pokemon.users, pokemons: user.caughtPokemons}))
-                    });
-
-            })
+    User.findByIdAndUpdate(req.userId, { $push: { caughtPokemons: {pokemonId, time} } })
+        .then(() => {
+            return Pokemon.findOneAndUpdate({ number: pokemonId }, { $push: { users: req.userId } })
         })
-
+        .then(() => res.status(200))
+        .catch(() => res.status(500).send("There was a problem with updating"));
 });
 
 router.get('/:id', (req, res) => {

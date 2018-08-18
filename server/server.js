@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const pokemons = require('./routes/api/pokemons');
-const AuthController = require('./routes/api/auth/AuthController');
+const AuthController = require('./routes/api/auth/auth');
 const handleToken = require('./middlewares/auth/handleToken');
 
 const app = express();
