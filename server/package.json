@@ -5,10 +5,11 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "initDB": "node copyDB.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Leemvale",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^1.18.3"

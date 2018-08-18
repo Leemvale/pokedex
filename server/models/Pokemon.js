@@ -10,8 +10,9 @@ const PokemonSchema = new Schema({
         type: Number,
         require: true
     },
-    caught: Boolean,
-    time: Date
+    users: {
+        type: Array
+    }
 });
 
 module.exports = Pokemon = mongoose.model('pokemons', PokemonSchema);
