@@ -1,22 +1,27 @@
 const Pokemon = require('./models/Pokemon');
-const DBjson = require('../pokemons');
+const dbJson = require('./pokemons');
 const mongoose = require('mongoose');
 
 // db Config
 const db = require('./config/keys').mongoURI;
-mongoose
-    .connect(db, {useNewUrlParser: true})
-    .then(() => {
-        console.log('MongoDB Connected...');
-        DBjson.pokemons.forEach((pokemon) => {
-            const newPokemon = new Pokemon({
-                name: pokemon.name,
-                number: pokemon.id
-            });
-            newPokemon.save()
+const initDB = () => {
+    return mongoose
+        .connect(db, {useNewUrlParser: true})
+        .then(async () => {
+            await Pokemon.insertMany(dbJson.pokemons);
         })
-    })
-    .catch(err => console.log(err));
+        .catch(err => console.log(err));
+};
+
+(async () => {
+    await initDB();
+    mongoose.disconnect();
+})();
+
+
+
+
+
 
 
 

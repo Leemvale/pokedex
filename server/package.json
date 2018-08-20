@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon -r dotenv/config server.js",
-    "initDB": "node copyDB.js"
+    "initDB": "node -r dotenv/config copyDB.js"
   },
   "keywords": [],
   "author": "Leemvale",
