@@ -8,7 +8,6 @@ mongoose
     .connect(db, {useNewUrlParser: true})
     .then(() => {
         console.log('MongoDB Connected...');
-        db.pokemons.drop();
         DBjson.pokemons.forEach((pokemon) => {
             const newPokemon = new Pokemon({
                 name: pokemon.name,
