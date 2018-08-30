@@ -7,9 +7,7 @@ const db = require('./config/keys').mongoURI;
 const initDB = () => {
     return mongoose
         .connect(db, {useNewUrlParser: true})
-        .then(async () => {
-            await Pokemon.insertMany(dbJson.pokemons);
-        })
+        .then(() => Pokemon.insertMany(dbJson.pokemons))
         .catch(err => console.log(err));
 };
 
