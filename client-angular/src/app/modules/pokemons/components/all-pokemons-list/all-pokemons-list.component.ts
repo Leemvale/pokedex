@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 import { PokemonsService } from '../../services/pokemons/pokemons.service';
 import { Pokemon } from '../../../../domain/Pokemon';
@@ -11,6 +11,7 @@ import { Pokemon } from '../../../../domain/Pokemon';
 export class AllPokemonsListComponent implements OnInit {
 
   pokemons: Pokemon[] = [];
+  pending = false;
   offset: number = 0;
   limit: number = 20;
   constructor(private pokemonsService: PokemonsService) { }
@@ -20,9 +21,11 @@ export class AllPokemonsListComponent implements OnInit {
     }
 
   private getPokemons() {
+    this.pending = true;
     this.pokemonsService.getPokemons(this.offset, this.limit)
       .subscribe(pokemons =>  {
         this.pokemons = this.pokemons.concat(<Pokemon[]>pokemons);
+        this.pending = false;
         this.offset++;
       })
   }
@@ -30,7 +33,7 @@ export class AllPokemonsListComponent implements OnInit {
   public catchPokemon(pokemon: Pokemon) {
     const indx = this.pokemons.indexOf(pokemon);
     this.pokemonsService.catchPokemon(pokemon).subscribe(
-      () => this.pokemons[indx].users.push(this.pokemonsService.getUserId()),
+      () => this.pokemons[indx].users.push({user: this.pokemonsService.getUserId()}),
       err => console.error(err));
 
   }
@@ -40,11 +43,11 @@ export class AllPokemonsListComponent implements OnInit {
   }
 
   public isPokemonCaughtByUser(pokemonUsersList) {
-    if (this.isAuth()) {
-      if (pokemonUsersList.includes(this.pokemonsService.getUserId())) {
-        return true;
-      }
-    }
-    return false;
+    return this.pokemonsService.isPokemonCaughtByUser(pokemonUsersList);
   }
+
+  public onScrollBottom() {
+    this.getPokemons();
+  }
+
 }

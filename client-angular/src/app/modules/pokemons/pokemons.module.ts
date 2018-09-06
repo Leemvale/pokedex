@@ -8,6 +8,10 @@ import { UsersPokemonsListComponent } from './components/users-pokemons-list/use
 import { PokemonPageComponent } from './components/pokemon-page/pokemon-page.component';
 import { RouterModule } from "@angular/router";
 import {MatButtonModule} from "@angular/material";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
+import { CaughtPipe } from './pipes/caught/caught.pipe';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -15,12 +19,15 @@ import {MatButtonModule} from "@angular/material";
     AllPokemonsListComponent,
     PokemonComponent,
     UsersPokemonsListComponent,
-    PokemonPageComponent
+    PokemonPageComponent,
+    CaughtPipe
   ],
   imports: [
     BrowserModule,
     RouterModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
+    SharedModule
   ],
   providers: [PokemonsService],
   exports: [

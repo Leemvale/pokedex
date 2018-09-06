@@ -8,7 +8,8 @@ import { PokemonsModule } from './modules/pokemons/pokemons.module';
 import { HeaderComponent } from './components/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './modules/auth/auth.module';
-import { AuthService } from './services/auth/auth.service';
+import {AuthService} from "./services/auth/auth.service";
+
 
 
 

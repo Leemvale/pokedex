@@ -23,6 +23,20 @@ export class PokemonsService {
     return this.http.put(this.catchPokemonRequest, {pokemon, time: Date.now()}, this.authService.getOptions())
  }
 
+ public getPokemonById(id) {
+    return this.http.get(`http://localhost:5000/api/pokemons/${id}`, this.authService.getOptions())
+ }
+
+ public isPokemonCaughtByUser(pokemonUsersList) {
+    pokemonUsersList = pokemonUsersList.map(item => item.user);
+    if (this.authService.checkAuth()) {
+      if (pokemonUsersList.includes(this.getUserId())) {
+        return true;
+      }
+    }
+    return false;
+  }
+
  public isUserAuthorized() {
     return this.authService.checkAuth();
  }
