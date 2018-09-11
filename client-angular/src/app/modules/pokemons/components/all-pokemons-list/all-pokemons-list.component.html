@@ -3,12 +3,12 @@
     <app-pokemon [pokemon]="pokemon"></app-pokemon>
     <button *ngIf="isAuth()" mat-flat-button
             (click)="catchPokemon(pokemon)"
-            [disabled]="isPokemonCaughtByUser(pokemon.users)">Catch</button>
+            [disabled]="pokemon.caught">Catch</button>
   </div>
 
-  <mat-progress-spinner *ngIf="pending"
-                        class="example-margin"
-                        [color]="'primary'"
-                        [mode]="'indeterminate'">
-  </mat-progress-spinner>
+  <div class="spinner" *ngIf="pending">
+    <mat-progress-spinner [color]="'primary'"
+                          [mode]="'indeterminate'">
+    </mat-progress-spinner>
+  </div>
 </div>

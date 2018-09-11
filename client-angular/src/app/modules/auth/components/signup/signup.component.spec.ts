@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginComponent } from './login.component';
 import { ReactiveFormsModule} from "@angular/forms";
 import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
@@ -10,9 +9,11 @@ import {AuthService} from "../../sevices/auth/auth.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {Router} from "@angular/router";
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+import {SignupComponent} from "./signup.component";
+
+describe('SignupComponent', () => {
+  let component: SignupComponent;
+  let fixture: ComponentFixture<SignupComponent>;
 
   let authService: AuthService;
   let authServiceStub: Partial<AuthService>;
@@ -32,7 +33,7 @@ describe('LoginComponent', () => {
         BrowserAnimationsModule,
         ReactiveFormsModule
       ],
-      declarations: [ LoginComponent ],
+      declarations: [ SignupComponent, ],
       providers:    [ {provide: AuthService, useValue: authServiceStub },
                       { provide: Router, useValue: routerSpy }]
     })
@@ -41,7 +42,7 @@ describe('LoginComponent', () => {
 
   beforeEach(() => {
 
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(SignupComponent);
     component = fixture.componentInstance;
     authService = fixture.debugElement.injector.get(AuthService);
     fixture.detectChanges();

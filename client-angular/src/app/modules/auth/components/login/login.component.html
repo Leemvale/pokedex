@@ -9,6 +9,9 @@
         <mat-form-field class="full-width-input">
           <input matInput type="password" placeholder="Password" formControlName="password" required>
         </mat-form-field>
+
+        <div *ngIf="error">{{error}}</div>
+
         <button mat-raised-button color="primary" type="submit">Log In</button>
       </form>
     </mat-card-content>

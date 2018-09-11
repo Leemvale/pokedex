@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {AuthResult} from "../../domain/AuthResult";
 import { HttpHeaders } from '@angular/common/http';
-import {Router} from "@angular/router";
 
+import { AuthResult } from '../../../../domain/AuthResult';
 
 @Injectable()
 export class AuthService {
@@ -14,23 +13,14 @@ export class AuthService {
 
   isAuth: boolean = false;
 
-  constructor(private http: HttpClient,
-              private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   public register (name, email, password) {
-    this.http.post<AuthResult>(this.registerRequest, {name, email, password})
-      .subscribe(res => {
-        this.setToken(res.token);
-        this.router.navigate(['/all-pokemons'])
-      });
+    return this.http.post<AuthResult>(this.registerRequest, {name, email, password})
   }
 
   public login (email, password) {
-    this.http.post<AuthResult>(this.loginRequest, {email, password})
-      .subscribe(res => {
-        this.setToken(res.token);
-        this.router.navigate(['/all-pokemons'])
-      }, err => console.log(err));
+    return this.http.post<AuthResult>(this.loginRequest, {email, password})
   }
 
   public checkAuth() {
@@ -42,7 +32,7 @@ export class AuthService {
     this.isAuth = false;
   }
 
-  private setToken(token) {
+  public setToken(token) {
     this.isAuth = true;
     localStorage.setItem('token', token);
   }
@@ -55,17 +45,6 @@ export class AuthService {
     localStorage.removeItem('token');
   }
 
-
-  public checkToken() {
-    this.http.post(this.checkTokenRequest, {}, this.getOptions()).subscribe(
-      res => this.isAuth = true, error =>  this.isAuth = false
-    )
-  }
-
-  public setOptions() {
-
-  }
-
   public getOptions() {
     return {
       headers: new HttpHeaders({
@@ -74,8 +53,13 @@ export class AuthService {
       })}
   }
 
-  public getUserId() {
-    const payload =  this.getToken().split('.')[1];
-    return JSON.parse(atob(payload)).id;
+  public checkToken() {
+    return this.http.post(this.checkTokenRequest, {}, this.getOptions())
+      .toPromise()
+      .then(() => this.isAuth = true)
+      .catch(error => {
+        console.log(error);
+        this.isAuth = false;
+      });
   }
 }

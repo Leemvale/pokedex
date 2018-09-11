@@ -1,14 +1,38 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PokemonPageComponent } from './pokemon-page.component';
+import {CaughtPipe} from "../../pipes/caught/caught.pipe";
+import {Pokemon} from "../../../../domain/Pokemon";
+import {PokemonsService} from "../../services/pokemons/pokemons.service";
+import {ActivatedRoute} from "@angular/router";
+import {ActivatedRouteStub} from "../../../../../testing/activated-route-stub";
+import {of} from "rxjs/internal/observable/of";
+
 
 describe('PokemonPageComponent', () => {
   let component: PokemonPageComponent;
   let fixture: ComponentFixture<PokemonPageComponent>;
 
+  let activatedRoute: ActivatedRouteStub;
+
+  let getPokemonByIdSpy: jasmine.Spy;
+
+  const testPokemon: Pokemon = {
+    _id: '',
+    id: 1,
+    name: 'Pokemon1'
+  };
+
   beforeEach(async(() => {
+    activatedRoute = new ActivatedRouteStub( { id: testPokemon.id });
+
+    const pokemonsServiceStub = jasmine.createSpyObj('PokemonsService', ['getPokemonById']);
+    getPokemonByIdSpy = pokemonsServiceStub.getPokemonById.and.returnValue(of(testPokemon));
+
     TestBed.configureTestingModule({
-      declarations: [ PokemonPageComponent ]
+      declarations: [ PokemonPageComponent, CaughtPipe ],
+      providers: [{ provide: PokemonsService, useValue: pokemonsServiceStub },
+                  { provide: ActivatedRoute, useValue: activatedRoute },]
     })
     .compileComponents();
   }));

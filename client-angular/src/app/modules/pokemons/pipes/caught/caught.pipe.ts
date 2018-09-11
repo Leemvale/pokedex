@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Caughtable } from '../../../../domain/Caughtable';
 
 @Pipe({
   name: 'caught'
 })
 export class CaughtPipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
-    return value? "Caught" : "Not Caught"
+  transform(obj: Caughtable): string {
+    return obj.caught ? "Caught" : "Not Caught"
   }
-
 }

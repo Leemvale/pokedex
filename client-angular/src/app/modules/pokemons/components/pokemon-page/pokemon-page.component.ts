@@ -14,7 +14,6 @@ export class PokemonPageComponent implements OnInit {
     _id: '',
     id: null,
     name: '',
-    users: [],
   };
   caught: boolean = false;
   srcImage: string;
@@ -24,27 +23,14 @@ export class PokemonPageComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getPokemon();
+    this.route.paramMap.subscribe(pmap => this.getPokemon(pmap.get('id')))
   }
 
-  getPokemon() {
-    const id = +this.route.snapshot.paramMap.get('id');
+  getPokemon(id) {
     this.pokemonsService.getPokemonById(id).subscribe(res => {
       this.pokemon = <Pokemon>res;
       this.srcImage = `https://raw.githubusercontent.com/epam-js-may-2018/homework-7-js/master/pokemons/${this.pokemon.id}.png`;
-      if( this.pokemonsService.isPokemonCaughtByUser(this.pokemon.users)) {
-        this.caught = true;
-        this.time = this.getCaughtTime();
-      }
     })
   }
 
-  getCaughtTime() {
-    return this.time = this.pokemon.users.find((value, index, obj) => {
-      if (value.user === this.pokemonsService.getUserId()) {
-        return true
-      }
-      return false
-    }).time;
-  }
 }

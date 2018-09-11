@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl, Validators, ValidatorFn, ValidationErrors} from '@angular/forms';
-import { AuthService } from '../../../../services/auth/auth.service';
+import { FormGroup, FormControl, Validators, ValidatorFn, ValidationErrors } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { AuthService } from '../../sevices/auth/auth.service';
+
 
 @Component({
   selector: 'app-signup',
@@ -25,10 +28,10 @@ export class SignupComponent implements OnInit {
       }, this.passwordsAreEqual())
   });
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,
+              private router: Router) {}
 
   ngOnInit() {
-    console.log(this.newProfileForm)
   }
 
   private passwordsAreEqual(): ValidatorFn {
@@ -43,6 +46,10 @@ export class SignupComponent implements OnInit {
   public onSubmit() {
     const {userName, email, password} = this.newProfileForm.value;
     this.authService.register(userName, email, password.passwordOrigin)
+      .subscribe(res => {
+      this.authService.setToken(res.token);
+      this.router.navigate(['/all-pokemons'])
+    });
   }
 
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from '../../../../services/auth/auth.service';
+import { AuthService } from '../../../auth/sevices/auth/auth.service';
 import { Pokemon } from "../../../../domain/Pokemon";
 
 @Injectable()
@@ -12,7 +12,9 @@ export class PokemonsService {
               private authService: AuthService) {}
 
   public getPokemons(offset, limit) {
-    return this.http.get(`http://localhost:5000/api/pokemons?offset=${offset}&limit=${limit}`);
+    const options = this.authService.checkAuth() ? this.authService.getOptions() : {};
+    console.log(this.authService.checkAuth() );
+    return this.http.get(`http://localhost:5000/api/pokemons?offset=${offset}&limit=${limit}`, options);
   }
 
   public getCaughtPokemons(offset, limit) {
@@ -25,23 +27,5 @@ export class PokemonsService {
 
  public getPokemonById(id) {
     return this.http.get(`http://localhost:5000/api/pokemons/${id}`, this.authService.getOptions())
- }
-
- public isPokemonCaughtByUser(pokemonUsersList) {
-    pokemonUsersList = pokemonUsersList.map(item => item.user);
-    if (this.authService.checkAuth()) {
-      if (pokemonUsersList.includes(this.getUserId())) {
-        return true;
-      }
-    }
-    return false;
-  }
-
- public isUserAuthorized() {
-    return this.authService.checkAuth();
- }
-
- public getUserId() {
-    return this.authService.getUserId();
  }
 }

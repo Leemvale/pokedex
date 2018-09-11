@@ -6,14 +6,15 @@ import {AllPokemonsListComponent} from "./modules/pokemons/components/all-pokemo
 import {LoginComponent} from "./modules/auth/components/login/login.component";
 import {PokemonPageComponent} from "./modules/pokemons/components/pokemon-page/pokemon-page.component";
 import {UsersPokemonsListComponent} from "./modules/pokemons/components/users-pokemons-list/users-pokemons-list.component";
+import {AuthGuardService} from "./modules/auth/sevices/auth-guard/auth-guard.service";
 
 const routes: Routes = [
   { path: '', redirectTo: 'all-pokemons', pathMatch: 'full' },
   { path: 'all-pokemons', component: AllPokemonsListComponent },
-  { path: 'caught-pokemons', component: UsersPokemonsListComponent },
+  { path: 'caught-pokemons', canActivate:[AuthGuardService], component: UsersPokemonsListComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'pokemons/:id', component: PokemonPageComponent}
+  { path: 'pokemons/:id', canActivate:[AuthGuardService], component: PokemonPageComponent}
 ];
 
 @NgModule({
