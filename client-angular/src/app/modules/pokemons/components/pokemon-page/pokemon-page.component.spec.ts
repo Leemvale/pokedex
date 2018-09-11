@@ -46,4 +46,8 @@ describe('PokemonPageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should get pokemon', () => {
+    expect(component.pokemon).toEqual(testPokemon);
+  });
 });

@@ -30,10 +30,10 @@ router.post('/register', (req, res) => {
         .catch(() => res.status(500).send("Something wrong with registration."))
 });
 
-router.post('/login', function (req, res) {
+router.post('/login', (req, res) => {
     User.findOne({email: req.body.email})
         .then(user => {
-            if (!user) return res.status(404).send('No user found.');
+            if (!user) return res.status(404).send({message: 'User not found.'});
             const passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
             if (!passwordIsValid) return res.status(401).send({token: null});
             const token = jwt.sign({id: user._id}, config.secret, {
@@ -44,8 +44,12 @@ router.post('/login', function (req, res) {
         .catch(() => res.status(500).send('Error on the server.'))
 });
 
-router.get('/logout', function (req, res) {
+router.get('/logout', (req, res) => {
     res.status(200).send({token: null});
+});
+
+router.post('/check-token', (req, res) => {
+    res.status(200).send();
 });
 
 module.exports = router;

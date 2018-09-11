@@ -7,14 +7,15 @@ import { Pokemon } from "../../../../domain/Pokemon";
 export class PokemonsService {
 
   catchPokemonRequest: string = 'http://localhost:5000/api/pokemons';
-
   constructor(private http: HttpClient,
               private authService: AuthService) {}
 
   public getPokemons(offset, limit) {
-    const options = this.authService.checkAuth() ? this.authService.getOptions() : {};
-    console.log(this.authService.checkAuth() );
-    return this.http.get(`http://localhost:5000/api/pokemons?offset=${offset}&limit=${limit}`, options);
+    return this.http.get(`http://localhost:5000/api/pokemons?offset=${offset}&limit=${limit}`, this.getOptions());
+  }
+
+  public getOptions() {
+    return this.authService.checkAuth() ? this.authService.getOptions() : {};
   }
 
   public getCaughtPokemons(offset, limit) {

@@ -6,12 +6,12 @@ const PokemonSchema = new Schema({
         type: String,
         require: true
     },
-    number: {
+    id: {
         type: Number,
         require: true
     },
     users: {
-        type: Array
+        type: Array,
     }
 });
 

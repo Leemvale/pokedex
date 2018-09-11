@@ -53,6 +53,18 @@ describe('AllPokemonsListComponent ', () => {
   });
 
   it('should get pokemons', () => {
-    expect(component.pokemons).toBeTruthy(testPokemons);
+    expect(component.pokemons).toEqual(testPokemons);
+  });
+
+  it('should call getPokemons method twice', () => {
+    component.pending = false;
+    component.onScrollBottom();
+    expect(getPokemonsSpy.calls.count()).toBe(2);
+  });
+
+  it('should call getPokemons method once', () => {
+    component.pending = true;
+    component.onScrollBottom();
+    expect(getPokemonsSpy.calls.count()).toBe(1);
   });
 });
