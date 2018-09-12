@@ -18,18 +18,21 @@
           Incorrect email
         </p>
 
-        <div  formGroupName="password">
+        <div formGroupName="password">
           <mat-form-field class="full-width-input">
-            <input matInput type="password" placeholder="Password" formControlName="passwordOrigin">
+            <input matInput type="password" placeholder="Password" formControlName="passwordOrigin" in>
           </mat-form-field>
 
           <mat-form-field class="full-width-input">
             <input matInput type="password" placeholder="Password" formControlName="passwordConfirm">
           </mat-form-field>
         </div>
+        <p *ngIf="newProfileForm.get('password.passwordOrigin').invalid && newProfileForm.get('password').touched" class="validation-note">
+          Password should contain more than 5 symbols
+        </p>
         <p *ngIf="newProfileForm.get('password').errors?.passwordsNotEqual &&
-                  newProfileForm.get('password').touched" class="validation-note">
-          Passwords are nor equal
+                  newProfileForm.get('password.passwordConfirm').touched" class="validation-note">
+          Passwords are not equal
         </p>
         <button mat-raised-button color="primary"
                 class="signup-content__submit-btn"

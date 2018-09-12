@@ -1,5 +1,5 @@
 <div  appInfiniteScroll (scrollBottom)="onScrollBottom()"  class="all-pokemons">
   <div *ngFor="let pokemon of pokemons" class="pokemon">
-    <app-pokemon [pokemon]="pokemon"></app-pokemon>
+    <app-pokemon [pokemon]="pokemon" class="auth-pokemon-card"></app-pokemon>
   </div>
 </div>

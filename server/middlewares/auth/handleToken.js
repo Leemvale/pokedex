@@ -8,7 +8,7 @@ function handleToken(req, res, next) {
     } else {
         jwt.verify(token, config.secret, function(err, decoded) {
             if (err)
-                return res.status(500).send('Failed to authenticate token.');
+                return res.status(500).send({message: 'Failed to authenticate token.'});
             req.userId = decoded.id;
             next();
         });

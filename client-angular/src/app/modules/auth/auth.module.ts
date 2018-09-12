@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import {AuthGuardService} from "./sevices/auth-guard/auth-guard.service";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   providers: [AuthService, AuthGuardService],
@@ -17,6 +18,7 @@ import {AuthGuardService} from "./sevices/auth-guard/auth-guard.service";
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
+    MatIconModule,
     BrowserAnimationsModule,
     ReactiveFormsModule
   ],

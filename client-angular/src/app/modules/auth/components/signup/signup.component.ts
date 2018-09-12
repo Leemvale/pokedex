@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
     ]),
     password: new FormGroup({
         passwordOrigin: new FormControl('', this.passwordValidators),
-        passwordConfirm: new FormControl('', this.passwordValidators)
+        passwordConfirm: new FormControl('')
       }, this.passwordsAreEqual())
   });
 

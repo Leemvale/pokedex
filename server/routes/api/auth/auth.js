@@ -27,7 +27,7 @@ router.post('/register', (req, res) => {
             });
             res.status(200).send({token: token});
         })
-        .catch(() => res.status(500).send("Something wrong with registration."))
+        .catch(() => res.status(500).send({message: 'Something wrong with registration.'}))
 });
 
 router.post('/login', (req, res) => {
@@ -35,13 +35,13 @@ router.post('/login', (req, res) => {
         .then(user => {
             if (!user) return res.status(404).send({message: 'User not found.'});
             const passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
-            if (!passwordIsValid) return res.status(401).send({token: null});
+            if (!passwordIsValid) return res.status(401).send({message: 'Invalid password!'});
             const token = jwt.sign({id: user._id}, config.secret, {
                 expiresIn: 86400 // 24 hours
             });
             res.status(200).send({token: token});
         })
-        .catch(() => res.status(500).send('Error on the server.'))
+        .catch(() => res.status(500).send({message: 'Error on the server.'}))
 });
 
 router.get('/logout', (req, res) => {

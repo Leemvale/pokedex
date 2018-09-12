@@ -34,7 +34,7 @@ router.get('/', (req, res) => {
                     name: pokemon.name
                 }}))
         })
-        .catch(() => res.status(500).send("There was a problem finding pokemons."))
+        .catch(() => res.status(500).send({message: 'There was a problem finding pokemons.'}))
 });
 
 router.get('/caught-pokemons', checkAuth, (req, res) => {

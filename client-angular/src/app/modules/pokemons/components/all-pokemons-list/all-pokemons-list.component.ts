@@ -27,7 +27,7 @@ export class AllPokemonsListComponent implements OnInit {
     this.pokemonsService.getPokemons(this.offset, this.limit)
       .subscribe(pokemons =>  {
         this.pokemons = this.pokemons.concat(<Pokemon[]>pokemons);
-        this.offset++;
+        this.offset = this.offset+1;
         this.pending = false;
       })
   }

@@ -1,6 +1,7 @@
 {
   "name": "client-angular",
   "version": "0.0.0",
+  "author": "leemvale",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

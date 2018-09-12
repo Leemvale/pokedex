@@ -1,8 +1,6 @@
 .pokemon {
+  display: block;
   height: 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   &__img {
     width: 100%;
   }

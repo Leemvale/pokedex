@@ -58,7 +58,6 @@ export class AuthService {
       .toPromise()
       .then(() => this.isAuth = true)
       .catch(error => {
-        console.log(error);
         this.isAuth = false;
       });
   }
