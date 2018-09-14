@@ -1,11 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {NO_ERRORS_SCHEMA} from "@angular/core";
+import { NO_ERRORS_SCHEMA } from "@angular/core";
 
-import { AllPokemonsListComponent  } from './all-pokemons-list.component';
-import {PokemonsService} from "../../services/pokemons/pokemons.service";
-import {Pokemon} from "../../../../domain/Pokemon";
-import {of} from "rxjs/internal/observable/of";
-import {AuthService} from "../../../auth/sevices/auth/auth.service";
+import { of } from 'rxjs/internal/observable/of';
+
+import { AllPokemonsListComponent } from './all-pokemons-list.component';
+import { PokemonsService } from '../../services/pokemons/pokemons.service';
+import { Pokemon } from '../../../../domain/Pokemon';
+import { AuthService } from '../../../auth/sevices/auth/auth.service';
 
 describe('AllPokemonsListComponent ', () => {
   let component: AllPokemonsListComponent ;

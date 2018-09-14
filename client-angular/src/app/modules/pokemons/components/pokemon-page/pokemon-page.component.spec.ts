@@ -1,12 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
+
+import {of} from 'rxjs/internal/observable/of';
 
 import { PokemonPageComponent } from './pokemon-page.component';
-import {CaughtPipe} from "../../pipes/caught/caught.pipe";
-import {Pokemon} from "../../../../domain/Pokemon";
-import {PokemonsService} from "../../services/pokemons/pokemons.service";
-import {ActivatedRoute} from "@angular/router";
-import {ActivatedRouteStub} from "../../../../../testing/activated-route-stub";
-import {of} from "rxjs/internal/observable/of";
+import { CaughtPipe } from '../../pipes/caught/caught.pipe';
+import { Pokemon } from '../../../../domain/Pokemon';
+import { PokemonsService } from '../../services/pokemons/pokemons.service';
+import { ActivatedRouteStub } from '../../../../../testing/activated-route-stub';
 
 
 describe('PokemonPageComponent', () => {

@@ -1,10 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {DebugElement, NO_ERRORS_SCHEMA} from '@angular/core'
+import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core'
+import { By } from '@angular/platform-browser';
 
 import { PokemonComponent } from './pokemon.component';
-import {RouterLinkDirectiveStub} from "../../../../../testing/router-link-directive-stub";
-import {By} from '@angular/platform-browser';
-import {Pokemon} from "../../../../domain/Pokemon";
+import { RouterLinkDirectiveStub } from '../../../../../testing/router-link-directive-stub';
+import { Pokemon } from '../../../../domain/Pokemon';
 
 describe('PokemonComponent', () => {
   let component: PokemonComponent;
@@ -41,5 +41,11 @@ describe('PokemonComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render pokemon name', () => {
+    const pokemonElement: HTMLElement = fixture.nativeElement;
+    const figcaption = pokemonElement.querySelector('figcaption');
+    expect(figcaption.textContent).toEqual('Pokemon1');
   });
 });

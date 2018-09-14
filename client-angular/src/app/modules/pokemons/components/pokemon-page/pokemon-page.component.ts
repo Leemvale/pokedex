@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {PokemonsService} from "../../services/pokemons/pokemons.service";
-import {ActivatedRoute} from "@angular/router";
-import {Pokemon} from "../../../../domain/Pokemon";
+import { ActivatedRoute } from '@angular/router';
+
+import { PokemonsService } from '../../services/pokemons/pokemons.service';
+import { Pokemon } from "../../../../domain/Pokemon";
 
 @Component({
   selector: 'app-pokemon-page',

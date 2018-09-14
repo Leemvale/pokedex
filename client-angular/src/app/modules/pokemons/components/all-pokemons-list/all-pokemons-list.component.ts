@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { PokemonsService } from '../../services/pokemons/pokemons.service';
+import { AuthService } from '../../../auth/sevices/auth/auth.service';
 import { Pokemon } from '../../../../domain/Pokemon';
-import {AuthService} from "../../../auth/sevices/auth/auth.service";
+
 
 @Component({
   selector: 'app-all-pokemons-list',

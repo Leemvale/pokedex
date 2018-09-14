@@ -1,8 +1,8 @@
-import {TestBed, inject} from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
+import { HttpClient } from '@angular/common/http';
 
-import {AuthService} from "./auth.service";
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs/internal/Observable";
+import { AuthService } from './auth.service';
+import { Observable } from 'rxjs/internal/Observable';
 
 describe('AuthService', () => {
   let httpClientSpy: { post: jasmine.Spy};

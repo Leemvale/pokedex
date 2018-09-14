@@ -1,6 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
+import { Component } from "@angular/core";
+
 import { AppComponent } from './app.component';
-import {Component} from "@angular/core";
 
 @Component({selector: 'app-header', template: ''})
 class HeaderStubComponent {}

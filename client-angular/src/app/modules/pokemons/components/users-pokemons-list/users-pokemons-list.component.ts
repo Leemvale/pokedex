@@ -1,7 +1,8 @@
-import {Component, HostListener, OnInit} from '@angular/core';
-import {PokemonsService} from "../../services/pokemons/pokemons.service";
-import {Pokemon} from "../../../../domain/Pokemon";
-import {CaughtPokemon} from "../../../../domain/CaughtPokemon";
+import { Component, OnInit } from '@angular/core';
+
+import { PokemonsService } from '../../services/pokemons/pokemons.service';
+import { Pokemon } from '../../../../domain/Pokemon';
+import { CaughtPokemon } from '../../../../domain/CaughtPokemon';
 
 @Component({
   selector: 'app-users-pokemons-list',
@@ -30,5 +31,4 @@ export class UsersPokemonsListComponent implements OnInit {
   public onScrollBottom() {
     this.getPokemons();
   }
-
 }

@@ -1,10 +1,10 @@
-import {TestBed, inject} from '@angular/core/testing';
-import {HttpClient} from '@angular/common/http';
+import { TestBed, inject } from '@angular/core/testing';
+import { HttpClient } from '@angular/common/http';
 
-import {PokemonsService} from "./pokemons.service";
-import {Pokemon} from "../../../../domain/Pokemon";
-import {AuthService} from "../../../auth/sevices/auth/auth.service";
-import {of} from "rxjs/internal/observable/of";
+import { PokemonsService } from './pokemons.service';
+import { Pokemon } from '../../../../domain/Pokemon';
+import { AuthService } from '../../../auth/sevices/auth/auth.service';
+import { of } from 'rxjs/internal/observable/of';
 
 describe('PokemonsService', () => {
 

@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+
 import { Caughtable } from '../../../../domain/Caughtable';
 
 @Pipe({

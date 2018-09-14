@@ -1,7 +1,7 @@
-import {TestBed, inject, async} from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 
 import { AuthGuardService } from './auth-guard.service';
-import {AuthService} from "../auth/auth.service";
+import { AuthService } from '../auth/auth.service';
 
 describe('AuthGuardService', () => {
   let authService: AuthService;

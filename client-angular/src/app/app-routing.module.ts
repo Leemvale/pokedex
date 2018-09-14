@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { SignupComponent } from './modules/auth/components/signup/signup.component';
-import {AllPokemonsListComponent} from "./modules/pokemons/components/all-pokemons-list/all-pokemons-list.component";
-import {LoginComponent} from "./modules/auth/components/login/login.component";
-import {PokemonPageComponent} from "./modules/pokemons/components/pokemon-page/pokemon-page.component";
-import {UsersPokemonsListComponent} from "./modules/pokemons/components/users-pokemons-list/users-pokemons-list.component";
-import {AuthGuardService} from "./modules/auth/sevices/auth-guard/auth-guard.service";
+import { AllPokemonsListComponent } from './modules/pokemons/components/all-pokemons-list/all-pokemons-list.component';
+import { LoginComponent } from './modules/auth/components/login/login.component';
+import { PokemonPageComponent } from './modules/pokemons/components/pokemon-page/pokemon-page.component';
+import { UsersPokemonsListComponent } from './modules/pokemons/components/users-pokemons-list/users-pokemons-list.component';
+import { AuthGuardService } from './modules/auth/sevices/auth-guard/auth-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'all-pokemons', pathMatch: 'full' },
